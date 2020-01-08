@@ -1,3 +1,5 @@
+boolean overButton = false;
+
 void setup() {
   size(640, 360);
 }
