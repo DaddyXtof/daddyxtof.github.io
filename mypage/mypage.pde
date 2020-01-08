@@ -1,14 +1,18 @@
 boolean overButton = false;
+String s="This is the page of daddyxtof";
 
 void setup() {
   size(640, 360);
 }
 
 void draw() {
-  background(204);
+  background(255);
+  fill(0);
+  text(s,10,10);
+  noFill();
 
   if (overButton == true) {
-    fill(255);
+    fill(200);
   } else {
     noFill();
   }
