@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-02-29 Sat 12:42 -->
+<!-- 2020-03-01 Sun 23:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Christophe's Repository</title>
+<title>Christophe Dehon's Repository</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Christophe Dehon" />
 <style type="text/css">
@@ -180,6 +180,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<style>*{font-family: Arial, Helvetica, sans-serif}</style>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -229,20 +230,129 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Christophe's Repository</h1>
-<div id="outline-container-org5ff2656" class="outline-2">
-<h2 id="org5ff2656"><span class="section-number-2">1</span> Tool to create 3 tier environment.</h2>
+<h1 class="title">Christophe Dehon's Repository</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org859d115">Challenge #1 - Tool to create 3 tier environment.</a></li>
+<li><a href="#org7c14e27">Challenge #2 - Code to query meta data from an AWS instance and provide results in JSON format.</a></li>
+<li><a href="#orgdaec0ae">Function to get a key value back from nested objects.</a></li>
+</ul>
 </div>
-<div id="outline-container-org62f6ade" class="outline-2">
-<h2 id="org62f6ade"><span class="section-number-2">2</span> Code to query meta data from an AWS instance and provide results in JSON format.</h2>
 </div>
-<div id="outline-container-org9a8f467" class="outline-2">
-<h2 id="org9a8f467"><span class="section-number-2">3</span> Function to get a key value back from nested objects.</h2>
+<div id="outline-container-org859d115" class="outline-2">
+<h2 id="org859d115">Challenge #1 - Tool to create 3 tier environment.</h2>
+<div class="outline-text-2" id="text-org859d115">
+<p>
+The three tier environment on <b>AWS</b> could be composed of:
+</p>
+<ul class="org-ul">
+<li><b>Network Load Balancer</b> for access/resilience</li>
+<li><b>EC2</b> for business logic (+presentation)</li>
+<li><b>S3</b> for data repository</li>
+</ul>
+<p>
+We would expect this environment to be setup across one region, one network and 2 availability zones.
+In order to automate the generation of this environment we could use <b>Terraform</b>.
+This would allow us to repeat this process faster and with confidence.
+The .tf files would need to take care of:
+</p>
+<ul class="org-ul">
+<li>setting up <b>EC2</b> (+apache) in the region</li>
+<li>setting up a <b>VPC</b> with a private and a public subnet.</li>
+<li>ensuring the storage/S3 environment is in the private subnet</li>
+<li>ensuring the front-end is open to incoming public sessions (public subnet)</li>
+<li>setting up <b>security groups</b></li>
+<li>setting up <b>ELB</b></li>
+<li>setting up <b>S3</b></li>
+</ul>
+<p>
+(the order of the above needs to be validated).
+</p>
+
+<p>
+The .tf files would also refer to keys/certificates required to connect to the AWS environment.  
+I do not have hands-on/immediate experience of crafting terraform files so cannot provide them but with more time this should not be difficult to do.
+</p>
+</div>
+</div>
+<div id="outline-container-org7c14e27" class="outline-2">
+<h2 id="org7c14e27">Challenge #2 - Code to query meta data from an AWS instance and provide results in JSON format.</h2>
+<div class="outline-text-2" id="text-org7c14e27">
+<p>
+A curl or a wget can retrieve metadata from most vendor instances. One would need to ssh to the instance and issue a curl request.
+From the vendors documentation it appears that the response are not always in json.
+Therefore we could have the following python script.
+It saves the metadata in a metadata.txt and takes an argument for look up.
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #ffad29; font-weight: bold;">import</span> json
+<span style="color: #ffad29; font-weight: bold;">import</span> requests
+<span style="color: #ffad29; font-weight: bold;">import</span> sys
+
+<span style="color: #dbdb95;">startingURL</span>=<span style="color: #e67128;">"http://169.254.169.254/latest/"</span>
+<span style="color: #dbdb95;">dic</span>={<span style="color: #e67128;">'latest'</span>:{}}
+
+<span style="color: #ffad29; font-weight: bold;">def</span> <span style="color: #00ede1; font-weight: bold;">parseURL</span>(url, dic):
+    <span style="color: #74af68;">#</span><span style="color: #74af68;">print(url)</span>
+    <span style="color: #dbdb95;">resp</span>=requests.get(url)
+    <span style="color: #ffad29; font-weight: bold;">if</span> resp.status_code == 404:
+        <span style="color: #ffad29; font-weight: bold;">return</span>
+    <span style="color: #ffad29; font-weight: bold;">for</span> r <span style="color: #ffad29; font-weight: bold;">in</span> resp.text.split(<span style="color: #e67128;">'\n'</span>):
+            <span style="color: #74af68;">#</span><span style="color: #74af68;">build new URL</span>
+            <span style="color: #ffad29; font-weight: bold;">if</span> <span style="color: #ffad29; font-weight: bold;">not</span> r:
+                <span style="color: #ffad29; font-weight: bold;">continue</span>
+            <span style="color: #ffad29; font-weight: bold;">if</span> r==<span style="color: #e67128;">"dynamic"</span> <span style="color: #ffad29; font-weight: bold;">or</span> r==<span style="color: #e67128;">"meta-data"</span> <span style="color: #ffad29; font-weight: bold;">or</span> r==<span style="color: #e67128;">"user-data"</span>:
+                <span style="color: #dbdb95;">r</span>+=<span style="color: #e67128;">'/'</span>
+            <span style="color: #ffad29; font-weight: bold;">if</span> r[-1]!=<span style="color: #e67128;">'/'</span>:
+                <span style="color: #74af68;">#</span><span style="color: #74af68;">print(r + " does not have a slash")</span>
+                <span style="color: #dbdb95;">dic</span>[r]={}
+                <span style="color: #dbdb95;">dic</span>[r]=getData(url+r)
+                <span style="color: #ffad29; font-weight: bold;">if</span> sys.argv[1]==r:
+                    <span style="color: #ffad29; font-weight: bold;">print</span>(sys.argv[1]+<span style="color: #e67128;">": "</span>+dic[r])
+                <span style="color: #74af68;"># </span><span style="color: #74af68;">print(r+"-"+dic[r])</span>
+            <span style="color: #ffad29; font-weight: bold;">else</span>:
+                <span style="color: #74af68;">#</span><span style="color: #74af68;">print (r + " has a slash")</span>
+                <span style="color: #dbdb95;">newURL</span>=url+r
+                <span style="color: #dbdb95;">newIndex</span>=r[0:<span style="color: #23d7d7;">len</span>(r)-1]
+                <span style="color: #dbdb95;">dic</span>[newIndex]={}
+                parseURL(newURL,dic[newIndex])
+    <span style="color: #ffad29; font-weight: bold;">return</span> dic
+
+<span style="color: #ffad29; font-weight: bold;">def</span> <span style="color: #00ede1; font-weight: bold;">getData</span>(url):
+    <span style="color: #74af68;"># </span><span style="color: #74af68;">print("Getting data at "+url)</span>
+    <span style="color: #dbdb95;">a</span>=requests.get(url)
+    <span style="color: #ffad29; font-weight: bold;">try</span>:
+        <span style="color: #dbdb95;">val</span>=json.loads(a.text)
+    <span style="color: #ffad29; font-weight: bold;">except</span> <span style="color: #34cae2;">ValueError</span>:
+        <span style="color: #74af68;"># </span><span style="color: #74af68;">print("Getting data as text")</span>
+        <span style="color: #dbdb95;">val</span>=a.text
+    <span style="color: #ffad29; font-weight: bold;">return</span> val
+
+<span style="color: #ffad29; font-weight: bold;">if</span> <span style="color: #23d7d7;">__name__</span> == <span style="color: #e67128;">'__main__'</span>:
+    <span style="color: #ffad29; font-weight: bold;">if</span> <span style="color: #23d7d7;">len</span>(sys.argv)&gt;1:
+        <span style="color: #ffad29; font-weight: bold;">print</span>(<span style="color: #e67128;">"Searching for... "</span> + sys.argv[1]+<span style="color: #e67128;">'\n'</span>)
+    <span style="color: #ffad29; font-weight: bold;">with</span> <span style="color: #23d7d7;">open</span>(<span style="color: #e67128;">"metadata.txt"</span>,<span style="color: #e67128;">"w"</span>) <span style="color: #ffad29; font-weight: bold;">as</span> mFile:
+        json.dump(parseURL(startingURL,dic), mFile, indent = 4)
+        <span style="color: #ffad29; font-weight: bold;">print</span>(<span style="color: #e67128;">'Latest metadata saved to metadata.txt'</span>+<span style="color: #e67128;">'\n'</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdaec0ae" class="outline-2">
+<h2 id="orgdaec0ae">Function to get a key value back from nested objects.</h2>
+<div class="outline-text-2" id="text-orgdaec0ae">
+<p>
+The code above shows the 
+</p>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Christophe Dehon</p>
-<p class="date">Created: 2020-02-29 Sat 12:42</p>
+<p class="date">Created: 2020-03-01 Sun 23:34</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
