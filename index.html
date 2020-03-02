@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-01 Sun 23:34 -->
+<!-- 2020-03-02 Mon 10:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Christophe Dehon's Repository</title>
@@ -231,19 +231,13 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <h1 class="title">Christophe Dehon's Repository</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org859d115">Challenge #1 - Tool to create 3 tier environment.</a></li>
-<li><a href="#org7c14e27">Challenge #2 - Code to query meta data from an AWS instance and provide results in JSON format.</a></li>
-<li><a href="#orgdaec0ae">Function to get a key value back from nested objects.</a></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org859d115" class="outline-2">
-<h2 id="org859d115">Challenge #1 - Tool to create 3 tier environment.</h2>
-<div class="outline-text-2" id="text-org859d115">
+<div id="outline-container-org13c79b2" class="outline-2">
+<h2 id="org13c79b2">Challenge #1 - Tool to create 3 tier environment.</h2>
+<div class="outline-text-2" id="text-org13c79b2">
+<p>
+<i>A 3 tier environment is a common setup. Use a tool of your choosing/familiarity create these resources. Please remember we will not be judged on the outcome but more focusing on the approach, style and reproducibility.</i>
+</p>
+
 <p>
 The three tier environment on <b>AWS</b> could be composed of:
 </p>
@@ -272,88 +266,124 @@ The .tf files would need to take care of:
 </p>
 
 <p>
-The .tf files would also refer to keys/certificates required to connect to the AWS environment.  
+The .tf files would also refer to keys/certificates required to connect to the AWS environment.
 I do not have hands-on/immediate experience of crafting terraform files so cannot provide them but with more time this should not be difficult to do.
 </p>
 </div>
 </div>
-<div id="outline-container-org7c14e27" class="outline-2">
-<h2 id="org7c14e27">Challenge #2 - Code to query meta data from an AWS instance and provide results in JSON format.</h2>
-<div class="outline-text-2" id="text-org7c14e27">
+<div id="outline-container-org4cebae9" class="outline-2">
+<h2 id="org4cebae9">Challenge #2 - Code to query meta data from an AWS instance and provide results in JSON format.</h2>
+<div class="outline-text-2" id="text-org4cebae9">
 <p>
-A curl or a wget can retrieve metadata from most vendor instances. One would need to ssh to the instance and issue a curl request.
-From the vendors documentation it appears that the response are not always in json.
+<i>Summary</i>
+</p>
+
+<p>
+<i>We need to write code that will query the meta data of an instance within aws and provide a json formatted output. The choice of language and implementation is up to you.</i>
+</p>
+
+<p>
+<i>Bonus Points</i>
+<i>The code allows for a particular data key to be retrieved individually</i>
+</p>
+
+<p>
+A curl or a wget command can retrieve metadata from most vendor instances. One would need to ssh to the instance and issue a curl request there.
+From the vendors documentation it appears that the response are not always in json so this needs to be validated (see code).
 Therefore we could have the following python script.
-It saves the metadata in a metadata.txt and takes an argument for look up.
+The script saves the metadata in a metadata.txt and takes an argument for look up.
+Code available here: <a href="https://github.com/DaddyXtof/metadata">https://github.com/DaddyXtof/metadata</a>
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #ffad29; font-weight: bold;">import</span> json
 <span style="color: #ffad29; font-weight: bold;">import</span> requests
 <span style="color: #ffad29; font-weight: bold;">import</span> sys
 
-<span style="color: #dbdb95;">startingURL</span>=<span style="color: #e67128;">"http://169.254.169.254/latest/"</span>
-<span style="color: #dbdb95;">dic</span>={<span style="color: #e67128;">'latest'</span>:{}}
+<span style="color: #dbdb95;">startingURL</span> = <span style="color: #e67128;">"http://169.254.169.254/latest/"</span>
+<span style="color: #dbdb95;">dic</span> = {<span style="color: #e67128;">'latest'</span>: {}}
+
 
 <span style="color: #ffad29; font-weight: bold;">def</span> <span style="color: #00ede1; font-weight: bold;">parseURL</span>(url, dic):
-    <span style="color: #74af68;">#</span><span style="color: #74af68;">print(url)</span>
-    <span style="color: #dbdb95;">resp</span>=requests.get(url)
+    <span style="color: #dbdb95;">resp</span> = requests.get(url)
     <span style="color: #ffad29; font-weight: bold;">if</span> resp.status_code == 404:
         <span style="color: #ffad29; font-weight: bold;">return</span>
     <span style="color: #ffad29; font-weight: bold;">for</span> r <span style="color: #ffad29; font-weight: bold;">in</span> resp.text.split(<span style="color: #e67128;">'\n'</span>):
-            <span style="color: #74af68;">#</span><span style="color: #74af68;">build new URL</span>
-            <span style="color: #ffad29; font-weight: bold;">if</span> <span style="color: #ffad29; font-weight: bold;">not</span> r:
-                <span style="color: #ffad29; font-weight: bold;">continue</span>
-            <span style="color: #ffad29; font-weight: bold;">if</span> r==<span style="color: #e67128;">"dynamic"</span> <span style="color: #ffad29; font-weight: bold;">or</span> r==<span style="color: #e67128;">"meta-data"</span> <span style="color: #ffad29; font-weight: bold;">or</span> r==<span style="color: #e67128;">"user-data"</span>:
-                <span style="color: #dbdb95;">r</span>+=<span style="color: #e67128;">'/'</span>
-            <span style="color: #ffad29; font-weight: bold;">if</span> r[-1]!=<span style="color: #e67128;">'/'</span>:
-                <span style="color: #74af68;">#</span><span style="color: #74af68;">print(r + " does not have a slash")</span>
-                <span style="color: #dbdb95;">dic</span>[r]={}
-                <span style="color: #dbdb95;">dic</span>[r]=getData(url+r)
-                <span style="color: #ffad29; font-weight: bold;">if</span> sys.argv[1]==r:
-                    <span style="color: #ffad29; font-weight: bold;">print</span>(sys.argv[1]+<span style="color: #e67128;">": "</span>+dic[r])
-                <span style="color: #74af68;"># </span><span style="color: #74af68;">print(r+"-"+dic[r])</span>
-            <span style="color: #ffad29; font-weight: bold;">else</span>:
-                <span style="color: #74af68;">#</span><span style="color: #74af68;">print (r + " has a slash")</span>
-                <span style="color: #dbdb95;">newURL</span>=url+r
-                <span style="color: #dbdb95;">newIndex</span>=r[0:<span style="color: #23d7d7;">len</span>(r)-1]
-                <span style="color: #dbdb95;">dic</span>[newIndex]={}
-                parseURL(newURL,dic[newIndex])
+        <span style="color: #ffad29; font-weight: bold;">if</span> <span style="color: #ffad29; font-weight: bold;">not</span> r:
+            <span style="color: #ffad29; font-weight: bold;">continue</span>
+        <span style="color: #ffad29; font-weight: bold;">if</span> r == <span style="color: #e67128;">"dynamic"</span> <span style="color: #ffad29; font-weight: bold;">or</span> r == <span style="color: #e67128;">"meta-data"</span> <span style="color: #ffad29; font-weight: bold;">or</span> r == <span style="color: #e67128;">"user-data"</span>:
+            <span style="color: #dbdb95;">r</span> += <span style="color: #e67128;">'/'</span>
+        <span style="color: #ffad29; font-weight: bold;">if</span> r[-1] != <span style="color: #e67128;">'/'</span>:
+            <span style="color: #dbdb95;">dic</span>[r] = {}
+            <span style="color: #dbdb95;">dic</span>[r] = getData(url + r)
+            <span style="color: #ffad29; font-weight: bold;">if</span> <span style="color: #23d7d7;">len</span>(sys.argv) &gt; 1 <span style="color: #ffad29; font-weight: bold;">and</span> sys.argv[1] == r:
+                <span style="color: #ffad29; font-weight: bold;">print</span>(sys.argv[1] + <span style="color: #e67128;">": "</span>)
+                <span style="color: #ffad29; font-weight: bold;">print</span>(dic[r])
+        <span style="color: #ffad29; font-weight: bold;">else</span>:
+            <span style="color: #dbdb95;">newURL</span> = url + r
+            <span style="color: #dbdb95;">newIndex</span> = r[0:<span style="color: #23d7d7;">len</span>(r) - 1]
+            <span style="color: #dbdb95;">dic</span>[newIndex] = {}
+            parseURL(newURL, dic[newIndex])
     <span style="color: #ffad29; font-weight: bold;">return</span> dic
 
+
 <span style="color: #ffad29; font-weight: bold;">def</span> <span style="color: #00ede1; font-weight: bold;">getData</span>(url):
-    <span style="color: #74af68;"># </span><span style="color: #74af68;">print("Getting data at "+url)</span>
-    <span style="color: #dbdb95;">a</span>=requests.get(url)
+    <span style="color: #dbdb95;">a</span> = requests.get(url)
     <span style="color: #ffad29; font-weight: bold;">try</span>:
-        <span style="color: #dbdb95;">val</span>=json.loads(a.text)
+        <span style="color: #dbdb95;">val</span> = json.loads(a.text)
     <span style="color: #ffad29; font-weight: bold;">except</span> <span style="color: #34cae2;">ValueError</span>:
-        <span style="color: #74af68;"># </span><span style="color: #74af68;">print("Getting data as text")</span>
-        <span style="color: #dbdb95;">val</span>=a.text
+        <span style="color: #dbdb95;">val</span> = a.text
     <span style="color: #ffad29; font-weight: bold;">return</span> val
 
+
 <span style="color: #ffad29; font-weight: bold;">if</span> <span style="color: #23d7d7;">__name__</span> == <span style="color: #e67128;">'__main__'</span>:
-    <span style="color: #ffad29; font-weight: bold;">if</span> <span style="color: #23d7d7;">len</span>(sys.argv)&gt;1:
-        <span style="color: #ffad29; font-weight: bold;">print</span>(<span style="color: #e67128;">"Searching for... "</span> + sys.argv[1]+<span style="color: #e67128;">'\n'</span>)
-    <span style="color: #ffad29; font-weight: bold;">with</span> <span style="color: #23d7d7;">open</span>(<span style="color: #e67128;">"metadata.txt"</span>,<span style="color: #e67128;">"w"</span>) <span style="color: #ffad29; font-weight: bold;">as</span> mFile:
-        json.dump(parseURL(startingURL,dic), mFile, indent = 4)
-        <span style="color: #ffad29; font-weight: bold;">print</span>(<span style="color: #e67128;">'Latest metadata saved to metadata.txt'</span>+<span style="color: #e67128;">'\n'</span>)
+    <span style="color: #ffad29; font-weight: bold;">if</span> <span style="color: #23d7d7;">len</span>(sys.argv) &gt; 1:
+        <span style="color: #ffad29; font-weight: bold;">print</span>(<span style="color: #e67128;">"Searching for... "</span> + sys.argv[1] + <span style="color: #e67128;">'\n'</span>)
+    <span style="color: #ffad29; font-weight: bold;">with</span> <span style="color: #23d7d7;">open</span>(<span style="color: #e67128;">"metadata.txt"</span>, <span style="color: #e67128;">"w"</span>) <span style="color: #ffad29; font-weight: bold;">as</span> mFile:
+        json.dump(parseURL(startingURL, dic), mFile, indent=4)
+        <span style="color: #ffad29; font-weight: bold;">print</span>(<span style="color: #e67128;">'Latest metadata saved to metadata.txt'</span> + <span style="color: #e67128;">'\n'</span>)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgdaec0ae" class="outline-2">
-<h2 id="orgdaec0ae">Function to get a key value back from nested objects.</h2>
-<div class="outline-text-2" id="text-orgdaec0ae">
+<div id="outline-container-org9b80927" class="outline-2">
+<h2 id="org9b80927">Challenge #3 - Function to get a key value back from nested objects.</h2>
+<div class="outline-text-2" id="text-org9b80927">
 <p>
-The code above shows the 
+<i>We have a nested object, we would like a function that you pass in the object and a key and get back the value. How this is implemented is up to you.</i>
+</p>
+
+<p>
+<i>Example Inputs</i>
+</p>
+
+<p>
+<i>object = {“a”:{“b”:{“c”:”d”}}}</i>
+</p>
+
+<p>
+<i>key = a/b/c=</i>
+</p>
+
+<p>
+<i>object = {“x”:{“y”:{“z”:”a”}}}</i>
+</p>
+
+<p>
+<i>key = x/y/z=</i>
+</p>
+
+<p>
+<i>value = a</i>
+</p>
+
+<p>
+The code above (metadata) shows the recursive function required to navigate the branches (URL) of the metadata structure.
+Using this example one could consider using the corresponding dictionary created as the nested object to lookup against.
+Therefore a function to find the corresponding key in this object based on a key (a/b/c) is simply a reverse of that parseURL function - i.e. parse the key provided by the user and navigate the dictionary accordingly.
 </p>
 </div>
 </div>
-</div>
-<div id="postamble" class="status">
-<p class="author">Author: Christophe Dehon</p>
-<p class="date">Created: 2020-03-01 Sun 23:34</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>
