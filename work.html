@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-03-19 Thu 10:02 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Current Work Org File</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Christophe Dehon" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'><meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'><style>html{touch-action:manipulation;-webkit-text-size-adjust:100%}body{padding:0;margin:0;background:#f2f6fa;color:#3c495a;font-weight:normal;font-size:15px;font-family:'San Francisco','Roboto','Arial',sans-serif}h2,h3,h4,h5,h6{font-family:'Trebuchet MS',Verdana,sans-serif;color:#586b82;padding:0;margin:20px 0 10px 0;font-size:1.1em}h2{margin:30px 0 10px 0;font-size:1.2em}a{color:#3fa7ba;text-decoration:none}p{margin:6px 0;text-align:justify}ul,ol{margin:0;text-align:justify}ul>li>code{color:#586b82}pre{white-space:pre-wrap}#content{width:96%;max-width:1000px;margin:2% auto 6% auto;background:white;border-radius:2px;border-right:1px solid #e2e9f0;border-bottom:2px solid #e2e9f0;padding:0 115px 150px 115px;box-sizing:border-box}#postamble{display:none}h1.title{background-color:#343C44;color:#fff;margin:0 -115px;padding:60px 0;font-weight:normal;font-size:2em;border-top-left-radius:2px;border-top-right-radius:2px}@media (max-width: 1050px){#content{padding:0 70px 100px 70px}h1.title{margin:0 -70px}}@media (max-width: 800px){#content{width:100%;margin-top:0;margin-bottom:0;padding:0 4% 60px 4%}h1.title{margin:0 -5%;padding:40px 5%}}pre,.verse{box-shadow:none;background-color:#f9fbfd;border:1px solid #e2e9f0;color:#586b82;padding:10px;font-family:monospace;overflow:auto;margin:6px 0}#table-of-contents{margin-bottom:50px;margin-top:50px}#table-of-contents h2{margin-bottom:5px}#text-table-of-contents ul{padding-left:15px}#text-table-of-contents>ul{padding-left:0}#text-table-of-contents li{list-style-type:none}#text-table-of-contents a{color:#7c8ca1;font-size:0.95em;text-decoration:none}table{border-color:#586b82;font-size:0.95em}table thead{color:#586b82}table tbody tr:nth-child(even){background:#f9f9f9}table tbody tr:hover{background:#586b82!important;color:white}table .left{text-align:left}table .right{text-align:right}.todo{font-family:inherit;color:inherit}.done{color:inherit}.tag{background:initial}.tag>span{background-color:#eee;font-family:monospace;padding-left:7px;padding-right:7px;border-radius:2px;float:right;margin-left:5px}#text-table-of-contents .tag>span{float:none;margin-left:0}.timestamp{color:#7c8ca1}@media print{@page{margin-bottom:3cm;margin-top:3cm;margin-left:2cm;margin-right:2cm;font-size:10px}#content{border:none}}</style>
+<style>*{font-family: Arial, Helvetica, sans-serif}</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Current Work Org File</h1>
+<div id="outline-container-orgd27dd84" class="outline-2">
+<h2 id="orgd27dd84">First brainstorming session Robin/Christophe</h2>
+<div class="outline-text-2" id="text-orgd27dd84">
+<ul class="org-ul">
+<li>Are there other teams providing SOC2 reviews and certification assistance?<br />
+<ul class="org-ul">
+<li>PWC<br /></li>
+<li>Deloitte<br /></li>
+<li>StandardFusion (SaaS)<br /></li>
+<li></li>
+</ul></li>
+
+<li><b>A SOC audit can only be performed by an independent CPA (Certified Public Accountant) or accountancy organisation</b>. SOC auditors are regulated by, and must adhere to specific professional standards established by, the AICPA. They are also required to follow specific guidance related to planning, executing and supervising audit procedures. AICPA members are also required to undergo a peer review to ensure their audits are conducted in accordance with accepted auditing standards. CPA organisations may employ non-CPA professionals with relevant information technology and security skills to participate in preparing for a SOC audit, but the final report must be provided and issued by a CPA. A successful SOC audit carried out by a CPA permits the service organisation to use the AICPA logo on its website.<br /></li>
+<li>"<code>SOC 2 isn’t a set of hard and fast rules. Rather, it is a framework that sends a strong signal that an organization prioritizes key attributes: security, availability, processing integrity, confidentiality, and privacy. Completing a SOC 2 certification on its own is generally not enough to prove that you are 100% secure as an organization, but it’s a very good start and will go a long way toward instilling trust in your customers.</code><br /></li>
+<li><code>Before SOC 2, the original standard for auditing service organizations was known as a SAS 70 (Statement of Auditing Standards No. 70). SAS 70 audits were performed by Certified Public Accountants (CPAs) with the original intent to report on the effectiveness of internal financial controls. These were introduced in the early 1990’s. Over time, the audit started to be used as a way to report on the effectiveness of a company’s internal controls around information security more broadly. Around 2010, SOC 1 and SOC 2 reports were introduced by the AICPA (The American Institute of Certified Public Accountants) with the explicit purpose of addressing the growing need of companies to externally validate and communicate their state of security. Today, SOC 1 reports are centered around controls impacting financial reports, similar the original SAS 70. SOC 2 reports, on the other hand, are written on audits against the Trust Services Criteria (TSC) standard, which we’ll explain below. This standard is ideal if you’re looking for a way to simultaneously improve your company’s maturity around business processes and security.</code>"<br /></li>
+<li>European equivalent<br />
+<ul class="org-ul">
+<li>International ISO 27001<br /></li>
+</ul></li>
+<li>Other ideas<br />
+<ul class="org-ul">
+<li>Operationalising the Machine Learning models - move away from expensive data scientist.<br />
+<ul class="org-ul">
+<li>How do you monitor the process once it is operationalised?<br /></li>
+<li>How to transition from expensive data scientists to a support teams? (securely)<br /></li>
+</ul></li>
+<li>Can we help organisations leverage the cloud for ediscovery purposes? see soc2/iso/pci etc&#x2026;<br /></li>
+</ul></li>
+<li>Look into templates for best practices in virtualisation/docker/kubernete<br />
+<ul class="org-ul">
+<li>Is someone else doing this? on the market?<br /></li>
+<li>PSPG<br /></li>
+</ul></li>
+<li>Moving large amount of data to cloud / snowball. Ensuring completeness?<br />
+<ul class="org-ul">
+<li><a href="https://docs.aws.amazon.com/snowball/latest/ug/AWSSnowball-ug.pdf">Link describing snowball</a><br /></li>
+<li>who is doing this for <b>Google</b> and <b>MS</b>?<br />
+<ul class="org-ul">
+<li>Microsoft Azure: data box. Each Azure Data Box weighs 45 pounds, supports 256-bit AES data encryption and has room for up to 100TB of data. It also integrates with solutions from several Microsoft partners, including Commvault, Veeam, Veritas and NetApp.<br /></li>
+<li>Google: GCP also has its own physical data transfer service called Transfer Appliance. A single Transfer Appliance comes in either 100TB or 480TB configurations.<br /></li>
+</ul></li>
+</ul></li>
+<li>eDiscovery / move data to the cloud?<br />
+<ul class="org-ul">
+<li>eDiscovery consultants:<br />
+<ul class="org-ul">
+<li>Eames Consulting<br /></li>
+<li>PA Consulting<br /></li>
+<li>Aquila Consulting<br /></li>
+<li>altlaw<br /></li>
+<li>BlackRock Expert Services<br /></li>
+</ul></li>
+<li>CloudReach: are they aware of such problem?<br /></li>
+<li>Is there a demand?<br /></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org233a617" class="outline-2">
+<h2 id="org233a617">What is SOC2?</h2>
+<div class="outline-text-2" id="text-org233a617">
+<ul class="org-ul">
+<li>American Institute of Certified Public Accountants has established:<br />
+<ul class="org-ul">
+<li>SSAE (Statement on Standards for Attestation Engagement) broken down into&#x2026;<br />
+<ul class="org-ul">
+<li>Security<br /></li>
+<li>Availability<br /></li>
+<li>Privacy controls<br /></li>
+</ul></li>
+</ul></li>
+<li>ACA is equivalent in the UK.<br /></li>
+<li>What is SOC2 <b>Security Principle</b>?<br />
+<ul class="org-ul">
+<li>2014 SOC2 Trust principles were updated and the Security principle came into life.<br /></li>
+<li>7 categories:<br />
+<ul class="org-ul">
+<li>Organisation and Management<br /></li>
+<li>Communication<br /></li>
+<li>Risks Assessment and their mgmt<br /></li>
+<li>Monitoring of the controls<br /></li>
+<li>Logical Access and Physical Access to sensitive systems and data<br /></li>
+<li>System Operations (what are the daily procedures?)<br /></li>
+<li>Change Management (how to test? evaluate? Approvals?)<br /></li>
+</ul></li>
+</ul></li>
+<li>SOC reports are valid for 12 months<br /></li>
+<li>What other standards exist:<br />
+<ul class="org-ul">
+<li>ISO 27001/27002 (info security)<br /></li>
+<li>SOC 1/2/3<br />
+<ul class="org-ul">
+<li>Service Organisation Control Reports<br /></li>
+<li>SOC2 type 1 = point in time. type 2 = historical view<br /></li>
+<li><p>
+Differences between SOC reports:<br />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">SOC1</td>
+<td class="org-left">SOC2</td>
+<td class="org-left">SOC3</td>
+</tr>
+
+<tr>
+<td class="org-left">Internal Control / Financial Reporting</td>
+<td class="org-left">X</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Trust Services Principles</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">X</td>
+<td class="org-left">X</td>
+</tr>
+
+<tr>
+<td class="org-left">Restricted use</td>
+<td class="org-left">X</td>
+<td class="org-left">X</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Need CPA to issue these reports</td>
+<td class="org-left">X</td>
+<td class="org-left">X</td>
+<td class="org-left">X</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+<li>FedRAMP<br /></li>
+<li>NIST<br /></li>
+<li>PCI-DSS<br /></li>
+<li>FISMA<br /></li>
+<li>HIPAA<br /></li>
+<li>SOX<br /></li>
+<li>GDPR<br /></li>
+<li>ISO 9001 (quality)<br /></li>
+</ul></li>
+<li>How does a company manage compliance and risk management program today:<br />
+<ul class="org-ul">
+<li>Spreadsheets<br /></li>
+<li>Wiki/Confluence/Sharepoint<br /></li>
+<li>Archer<br /></li>
+<li>SAP<br /></li>
+<li>ACL<br /></li>
+<li>MetricStream<br /></li>
+<li>Resolver<br /></li>
+</ul></li>
+<li>What SaaS companies exist for managing these?<br /></li>
+<li>PWC has done the SOC 3 assesment for Rackspace: <a href="https://dab35129f0361dca3159-2fe04d8054667ffada6c4002813eccf0.ssl.cf1.rackcdn.com/downloads/pdfs/Rackspace%20SOC%203%20Report%202017.pdf">Lievank</a><br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga682886" class="outline-2">
+<h2 id="orga682886">Is there a need/market for a tool for SOC2 and SOC3 compliance?</h2>
+</div>
+<div id="outline-container-orgaea10bd" class="outline-2">
+<h2 id="orgaea10bd">Agenda 19/03/2020</h2>
+<div class="outline-text-2" id="text-orgaea10bd">
+<p>
+<span class="underline">Proposed Agenda:</span><br />
+</p>
+<ul class="org-ul">
+<li>Discuss/decide on a Business specialism:<br />
+We help start ups achieve SOC2 certifications when using the cloud.<br />
+Either through<br />
+<ul class="org-ul">
+<li>implementation of automated processes / platforms such as:<br /></li>
+</ul></li>
+</ul>
+<p>
+or<br />
+</p>
+<ul class="org-ul">
+<li>through consultancy/review of the current state and processes.<br /></li>
+</ul>
+<ul class="org-ul">
+<li>What business solution are we selling?<br /></li>
+</ul>
+<p>
+Is this - Sec Dev Ops or SOC2 audits? Or something else?<br />
+</p>
+<ul class="org-ul">
+<li>Think about who we can take it to. First 2 warm conversation?<br /></li>
+</ul>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orgcbab717" class="outline-2">
+<h2 id="orgcbab717">Some Interesting Links</h2>
+<div class="outline-text-2" id="text-orgcbab717">
+<ul class="org-ul">
+<li><a href="https://www.sans.org/cyber-security-summit/archives/file/summit-archive-1510001564.pdf">DevOps in Regulated Environments</a><br /></li>
+<li><a href="https://www.pwc.co.uk/who-we-are/regional-sites/scotland/press-releases/Defining-difference-between-IS027001-and-SOC2-in-infosec.html">Differences between SOC2 and ISO27001in infosec</a><br /></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Christophe Dehon</p>
+<p class="date">Created: 2020-03-19 Thu 10:02</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
