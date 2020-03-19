@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-03-19 Thu 10:02 -->
+<!-- 2020-03-19 Thu 11:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Current Work Org File</title>
@@ -232,21 +232,24 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <h1 class="title">Current Work Org File</h1>
-<div id="outline-container-orgd27dd84" class="outline-2">
-<h2 id="orgd27dd84">First brainstorming session Robin/Christophe</h2>
-<div class="outline-text-2" id="text-orgd27dd84">
+<div id="outline-container-orgae51cb8" class="outline-2">
+<h2 id="orgae51cb8">Brainstorming sessions Robin/Christophe</h2>
+<div class="outline-text-2" id="text-orgae51cb8">
 <ul class="org-ul">
 <li>Are there other teams providing SOC2 reviews and certification assistance?<br />
 <ul class="org-ul">
 <li>PWC<br /></li>
 <li>Deloitte<br /></li>
 <li>StandardFusion (SaaS)<br /></li>
-<li></li>
+<li>&#x2026;<br /></li>
 </ul></li>
-
 <li><b>A SOC audit can only be performed by an independent CPA (Certified Public Accountant) or accountancy organisation</b>. SOC auditors are regulated by, and must adhere to specific professional standards established by, the AICPA. They are also required to follow specific guidance related to planning, executing and supervising audit procedures. AICPA members are also required to undergo a peer review to ensure their audits are conducted in accordance with accepted auditing standards. CPA organisations may employ non-CPA professionals with relevant information technology and security skills to participate in preparing for a SOC audit, but the final report must be provided and issued by a CPA. A successful SOC audit carried out by a CPA permits the service organisation to use the AICPA logo on its website.<br /></li>
-<li>"<code>SOC 2 isn’t a set of hard and fast rules. Rather, it is a framework that sends a strong signal that an organization prioritizes key attributes: security, availability, processing integrity, confidentiality, and privacy. Completing a SOC 2 certification on its own is generally not enough to prove that you are 100% secure as an organization, but it’s a very good start and will go a long way toward instilling trust in your customers.</code><br /></li>
-<li><code>Before SOC 2, the original standard for auditing service organizations was known as a SAS 70 (Statement of Auditing Standards No. 70). SAS 70 audits were performed by Certified Public Accountants (CPAs) with the original intent to report on the effectiveness of internal financial controls. These were introduced in the early 1990’s. Over time, the audit started to be used as a way to report on the effectiveness of a company’s internal controls around information security more broadly. Around 2010, SOC 1 and SOC 2 reports were introduced by the AICPA (The American Institute of Certified Public Accountants) with the explicit purpose of addressing the growing need of companies to externally validate and communicate their state of security. Today, SOC 1 reports are centered around controls impacting financial reports, similar the original SAS 70. SOC 2 reports, on the other hand, are written on audits against the Trust Services Criteria (TSC) standard, which we’ll explain below. This standard is ideal if you’re looking for a way to simultaneously improve your company’s maturity around business processes and security.</code>"<br /></li>
+</ul>
+<p>
+-"<i>SOC 2 isn’t a set of hard and fast rules. Rather, it is a framework that sends a strong signal that an organization prioritizes key attributes: security, availability, processing integrity, confidentiality, and privacy. Completing a SOC 2 certification on its own is generally not enough to prove that you are 100% secure as an organization, but it’s a very good start and will go a long way toward instilling trust in your customers.</i>"<br />
+</p>
+<ul class="org-ul">
+<li>"<i>Before SOC 2, the original standard for auditing service organizations was known as a SAS 70 (Statement of Auditing Standards No. 70). SAS 70 audits were performed by Certified Public Accountants (CPAs) with the original intent to report on the effectiveness of internal financial controls. These were introduced in the early 1990’s. Over time, the audit started to be used as a way to report on the effectiveness of a company’s internal controls around information security more broadly. Around 2010, SOC 1 and SOC 2 reports were introduced by the AICPA (The American Institute of Certified Public Accountants) with the explicit purpose of addressing the growing need of companies to externally validate and communicate their state of security. Today, SOC 1 reports are centered around controls impacting financial reports, similar the original SAS 70. SOC 2 reports, on the other hand, are written on audits against the Trust Services Criteria (TSC) standard, which we’ll explain below. This standard is ideal if you’re looking for a way to simultaneously improve your company’s maturity around business processes and security.</i>"<br /></li>
 <li>European equivalent<br />
 <ul class="org-ul">
 <li>International ISO 27001<br /></li>
@@ -290,19 +293,23 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org233a617" class="outline-2">
-<h2 id="org233a617">What is SOC2?</h2>
-<div class="outline-text-2" id="text-org233a617">
+<div id="outline-container-orgd59a809" class="outline-2">
+<h2 id="orgd59a809">What is SOC2?</h2>
+<div class="outline-text-2" id="text-orgd59a809">
 <ul class="org-ul">
 <li>American Institute of Certified Public Accountants has established:<br />
 <ul class="org-ul">
-<li>SSAE (Statement on Standards for Attestation Engagement) broken down into&#x2026;<br />
+<li>SSAE (Statement on Standards for Attestation Engagement) broken down into<br />
 <ul class="org-ul">
-<li>Security<br /></li>
+<li>Security (also known as common criteria)<br /></li>
 <li>Availability<br /></li>
 <li>Privacy controls<br /></li>
+<li>Processing Integrity<br /></li>
+<li>Confidentiality<br /></li>
 </ul></li>
+<li>Each principle has a set of standard criteria. You can choose to include one, several or all of the Trust Principle and related criteria. Once you choose to include a principle, all of the criteria related to that principle must be included in the report.<br /></li>
 </ul></li>
+<li>All SOC 2 audits include “Common Criteria”. This is the biggest section of the audit and touches on every aspect of information security controls. Companies can start with a Common Criteria audit if they’re looking to keep the scope small. Common Criteria includes aspects of all principles. In addition to Common Criteria, mature SaaS companies tend to add on Confidentiality and Availability. The Integrity principle is typically chosen by companies processing a lot of transactions, as well as financial institutions. Privacy is seldom included as part of a SOC 2 audit. While it has value, most organizations tend to focus their privacy efforts around compliance with HIPAA or EU regulations (like GDPR). This is because European companies generally want audits against their own standards, rather than SOC 2, and they tend to have more stringent requirements. If you need to uphold GDPR, for example, then you’ll be focusing on privacy when you go through that process.<br /></li>
 <li>ACA is equivalent in the UK.<br /></li>
 <li>What is SOC2 <b>Security Principle</b>?<br />
 <ul class="org-ul">
@@ -319,6 +326,19 @@ for the JavaScript code in this tag.
 </ul></li>
 </ul></li>
 <li>SOC reports are valid for 12 months<br /></li>
+<li>High level steps of a SOC2 report:<br />
+<ul class="org-ul">
+<li>Client identifies which systems are in scope<br /></li>
+<li>Client develops policies and procedures<br /></li>
+<li>Client implements new security controls to reduce risks<br /></li>
+<li>when ready client hire licensed CPA auditor to conduct audit<br />
+<ul class="org-ul">
+<li>the audit process involves scoping (type I or II?), artifact document collection and on site visit<br /></li>
+<li>time commitment is several hours of introductions then 2 days on site<br /></li>
+<li>while on site auditor will perform interviews and review material<br /></li>
+</ul></li>
+<li>If type II: An audit conducted against the Trust Service Criteria standard over a period of time. This period typically covers six months the first time, and then a year thereafter. In other words, this audit answers: Did the security controls that were in place from January 1 through July 31st operate effectively? This means you client will need a <b>system of record</b>.<br /></li>
+</ul></li>
 <li>What other standards exist:<br />
 <ul class="org-ul">
 <li>ISO 27001/27002 (info security)<br /></li>
@@ -410,57 +430,69 @@ Differences between SOC reports:<br />
 </ul>
 </div>
 </div>
-<div id="outline-container-orga682886" class="outline-2">
-<h2 id="orga682886">Is there a need/market for a tool for SOC2 and SOC3 compliance?</h2>
+<div id="outline-container-org5be7721" class="outline-2">
+<h2 id="org5be7721">Is there a need/market for a tool for SOC2 and SOC3 compliance?</h2>
 </div>
-<div id="outline-container-orgaea10bd" class="outline-2">
-<h2 id="orgaea10bd">Agenda 19/03/2020</h2>
-<div class="outline-text-2" id="text-orgaea10bd">
+<div id="outline-container-org7658389" class="outline-2">
+<h2 id="org7658389">Agenda 19/03/2020</h2>
+<div class="outline-text-2" id="text-org7658389">
 <p>
 <span class="underline">Proposed Agenda:</span><br />
 </p>
 <ul class="org-ul">
 <li>Discuss/decide on a Business specialism:<br />
-We help start ups achieve SOC2 certifications when using the cloud.<br />
-Either through<br />
 <ul class="org-ul">
-<li>implementation of automated processes / platforms such as:<br /></li>
+<li>We help start-ups achieve SOC2 certifications when using the cloud.<br />
+Either through<br /></li>
+<li>implementation of automated processes / platforms such as DocAssemble or Comply (see below) or<br /></li>
+<li>through consultancy/review of the current state and processes.<br /></li>
+</ul></li>
+<li>What business solution are we selling?<br /></li>
+<li>Is this - Sec Dev Ops or SOC2 audits? Or something else?<br /></li>
+<li>Think about who we can take it to. First 2 warm conversation?<br />
+<ul class="org-ul">
+<li>Perform presentations at Start-up MeetUp/gathering<br /></li>
 </ul></li>
 </ul>
-<p>
-or<br />
-</p>
+</div>
+</div>
+
+<div id="outline-container-org1483e0d" class="outline-2">
+<h2 id="org1483e0d">Lines of investigation</h2>
+<div class="outline-text-2" id="text-org1483e0d">
 <ul class="org-ul">
-<li>through consultancy/review of the current state and processes.<br /></li>
-</ul>
-<ul class="org-ul">
-<li>What business solution are we selling?<br /></li>
-</ul>
-<p>
-Is this - Sec Dev Ops or SOC2 audits? Or something else?<br />
-</p>
-<ul class="org-ul">
-<li>Think about who we can take it to. First 2 warm conversation?<br /></li>
+<li>Using <a href="https://docassemble.org/">DocAssemble</a> to put in place a questions and answers process allowing the client to progress through SOC2 preparation.<br /></li>
+<li>Using <a href="https://github.com/strongdm/comply">Comply</a> open source to generate policies<br /></li>
+<li>&#x2026;<br /></li>
 </ul>
 </div>
 </div>
 
-
-
-
-<div id="outline-container-orgcbab717" class="outline-2">
-<h2 id="orgcbab717">Some Interesting Links</h2>
-<div class="outline-text-2" id="text-orgcbab717">
+<div id="outline-container-org7470cd3" class="outline-2">
+<h2 id="org7470cd3">Some Interesting Links</h2>
+<div class="outline-text-2" id="text-org7470cd3">
 <ul class="org-ul">
 <li><a href="https://www.sans.org/cyber-security-summit/archives/file/summit-archive-1510001564.pdf">DevOps in Regulated Environments</a><br /></li>
 <li><a href="https://www.pwc.co.uk/who-we-are/regional-sites/scotland/press-releases/Defining-difference-between-IS027001-and-SOC2-in-infosec.html">Differences between SOC2 and ISO27001in infosec</a><br /></li>
+<li><a href="https://www.blissfully.com/guides/soc-2-compliance/">Good coverage/summary of SOC2</a><br /></li>
+<li><a href="https://www.strongdm.com/testimonials/yext/">StrongDM Video</a><br /></li>
+<li><a href="https://vimeo.com/330906721">A 30-90-120 Day Plan To Prepare For Your First SOC2 Audit | Webinar</a><br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org865de07" class="outline-2">
+<h2 id="org865de07">Open Questions:</h2>
+<div class="outline-text-2" id="text-org865de07">
+<ul class="org-ul">
+<li>what is Systrust?<br /></li>
+<li>What is Webtrust?<br /></li>
 </ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Christophe Dehon</p>
-<p class="date">Created: 2020-03-19 Thu 10:02</p>
+<p class="date">Created: 2020-03-19 Thu 11:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
