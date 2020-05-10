@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
+
+body {
+    background-color:#ffffff;
+    color:#000000;
+    font-family: 'Merriweather', serif;
+    margin-left: auto;
+    margin-right: auto;
+    width: 660px;
+}
+
+a {
+    color: #326891;
+    text-decoration: underline;
+}
+
+h1.title {
+    background-color:#ffffff;
+    color:#000000;
+    text-align: left;
+    font-size:2em;
+}
+
+.outline-2 {
+    color:#222222;
+    border-bottom: 1px solid #000000;    
+}
+
+.outline-text-2 {
+    color:#444444;    
+}
+
+code {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.title {
+    color:#222222;
+}
+
+pre.src {
+    font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
+    background-color: #575b75;
+    width: 700px;
+}
+
+.tag {
+    
+}
